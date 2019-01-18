@@ -110,6 +110,9 @@ def run_test_go_straight_for_seconds():
     #   then use this function to test that method.
     # -------------------------------------------------------------------------
 
+    robot = SimpleRoseBot()
+    robot.go_straight_for_seconds(80,5)
+
 
 def run_test_go_straight_for_inches():
     """ Tests the   go_straight_for_inches   method of SimpleRoseBot. """
@@ -122,6 +125,9 @@ def run_test_go_straight_for_inches():
     #   go_straight_for_inches   method of the SimpleRoseBot class,
     #   then use this function to test that method.
     # -------------------------------------------------------------------------
+
+    robot = SimpleRoseBot()
+    robot.go_straight_for_inches(80,30)
 
 
 def run_test_go_straight_until_black():
@@ -148,13 +154,38 @@ class SimpleRoseBot(object):
         self.right_wheel_motor = Motor('C')
         self.color_sensor = ColorSensor(3)
 
-    def go(self,left_wheel_speed, right_wheel_spped):
+    def go(self,left_wheel_speed, right_wheel_speed):
         self.left_wheel_motor.turn_on(left_wheel_speed)
-        self.right_wheel_motor.turn_on(right_wheel_spped)
+        self.right_wheel_motor.turn_on(right_wheel_speed)
 
     def stop(self):
         self.left_wheel_motor.turn_off()
         self.right_wheel_motor.turn_off()
+
+    def go_straight_for_seconds(self,speed,t):
+        self.go(speed,speed)
+        start = time.time()
+        while True:
+            current = time.time()
+            if current - start >= t:
+                break
+        self.stop()
+
+    def go_straight_for_inches(self,speed, inches):
+        start = Motor()
+        start = start.get_position()
+        self.go(speed, speed)
+        while True:
+            current = start.get_position()
+            if (current - start)/360 *1.3 >= inches:
+                break
+        self.stop()
+
+    def go_straight_until_black(self):
+
+
+
+
 
 
 ###############################################################################
