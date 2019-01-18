@@ -121,7 +121,7 @@ def run_test_go_straight_for_inches():
     print('Testing the   go_straight_for_inches   method of SimpleRoseBot:')
     print('--------------------------------------------------')
     # -------------------------------------------------------------------------
-    # TODO: 6. Implement this function, then implement the
+    # DONE: 6. Implement this function, then implement the
     #   go_straight_for_inches   method of the SimpleRoseBot class,
     #   then use this function to test that method.
     # -------------------------------------------------------------------------
