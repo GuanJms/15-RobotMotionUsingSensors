@@ -182,6 +182,7 @@ class SimpleRoseBot(object):
         self.stop()
 
     def go_straight_until_black(self):
+        None
 
 
 
